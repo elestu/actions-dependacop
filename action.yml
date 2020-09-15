@@ -1,0 +1,6 @@
+# action.yml
+name: "Dependacop"
+description: "Keeps your deps up to date"
+runs:
+  using: "docker"
+  image: "Dockerfile"

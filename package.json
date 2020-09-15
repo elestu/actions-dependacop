@@ -1,0 +1,112 @@
+{
+  "name": "@elestu/actions-dependacop",
+  "version": "0.0.1",
+  "description": "GitHub Action for package.json update.",
+  "keywords": [
+    "github-actions",
+    "npm",
+    "pr",
+    "pull-request",
+    "update",
+    "yarn",
+    "yarnpkg"
+  ],
+  "homepage": "https://github.com/elestu/actions-dependacop",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elestu/actions-dependacop.git"
+  },
+  "license": "MIT",
+  "author": "elestu",
+  "bin": {
+    "actions-dependacop": "bin/main.js"
+  },
+  "scripts": {
+    "build": "run-s clean lint test bundle",
+    "bundle": "parcel build src/index.ts --target=node --global main --no-source-maps",
+    "clean": "rm -r -f dist",
+    "clean:all": "rm -r -f dist .cache",
+    "compile": "tsc --project .",
+    "lint": "tslint --project .",
+    "prepublish": "run-s clean:all lint test bundle",
+    "test": "ava",
+    "watch": "ava -w"
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.35.0",
+    "@pnpm/read-modules-dir": "^2.0.1",
+    "cli-table3": "^0.6.0",
+    "convict": "^6.0.0",
+    "convict-format-with-validator": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "execa": "^4.0.2",
+    "git-url-parse": "^11.1.2",
+    "glob": "^7.1.6",
+    "moment": "^2.26.0",
+    "pino": "^6.3.2",
+    "pino-pretty": "^4.0.0",
+    "read-package-json": "^2.1.1",
+    "sha.js": "^2.4.11"
+  },
+  "devDependencies": {
+    "@types/convict": "^5.2.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/git-url-parse": "^9.0.0",
+    "@types/node": "^14.0.13",
+    "@types/pino": "^6.3.0",
+    "@types/prettier": "^2.0.1",
+    "@types/sha.js": "^2.4.0",
+    "@types/source-map-support": "^0.5.1",
+    "ava": "^3.9.0",
+    "cash-cp": "^0.2.0",
+    "cash-rm": "^0.2.0",
+    "cross-env": "^7.0.2",
+    "npm-check-updates": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^1.12.4",
+    "prettier": "^2.0.5",
+    "sort-package-json": "^1.44.0",
+    "source-map-support": "^0.5.19",
+    "strip-ansi": "^6.0.0",
+    "ts-node": "^8.10.2",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^3.9.5",
+    "typescript-tslint-plugin": "^0.5.5",
+    "typesync": "^0.7.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5",
+    "acorn": "7.1.1",
+    "kind-of": "6.0.3",
+    "serialize-to-js": "3.0.1"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "preferGlobal": true,
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ],
+    "files": [
+      "test/**/*.test.ts"
+    ],
+    "verbose": true
+  },
+  "bugs": {
+    "url": "https://github.com/elestu/actions-dependacop/issues"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  }
+}
