@@ -1,8 +1,9 @@
 # action.yml
 name: "Dependacop"
 description: "Keeps your deps up to date"
-icon: "arrow-up-circle"
-color: "blue"
+branding:
+  icon: "arrow-up-circle"
+  color: "blue"
 runs:
   using: "docker"
   image: "Dockerfile"
