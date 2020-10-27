@@ -20,7 +20,7 @@ export class CompareModel {
   public repo?: string;
   public homepage?: string;
   public tags: Set<string>;
-  public releasePage: string | undefined;
+  public releasePage?: string;
 
   constructor(project: PackageJson, o: PackageJson, n: PackageJson) {
     this.name = o.name;
@@ -43,7 +43,7 @@ export class CompareModel {
 
   protected getReleasePage() {
     if (this.repo) {
-      return `${this.repo}/releases/tag/v${this.current}`;
+      return `${this.repo}/releases/tag/v${this.wanted}`;
     }
     return this.homepage;
   }
