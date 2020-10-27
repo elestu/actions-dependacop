@@ -20,6 +20,7 @@ export class CompareModel {
   public repo?: string;
   public homepage?: string;
   public tags: Set<string>;
+  public releasePage: string | undefined;
 
   constructor(project: PackageJson, o: PackageJson, n: PackageJson) {
     this.name = o.name;
@@ -28,6 +29,7 @@ export class CompareModel {
     this.packageType = this.toPackageType(this.name, project);
     this.repo = this.toURL(o.repository);
     this.homepage = o.homepage;
+    this.releasePage = this.getReleasePage();
     this.tags = new Set();
   }
 
@@ -37,6 +39,14 @@ export class CompareModel {
 
   public diffWantedURL() {
     return this.diffURL(this.wanted);
+  }
+
+  protected getReleasePage() {
+    if (this.repo) {
+      const tag = this.toTag(this.current);
+      return `https://github.com/${this.repo}/releases/tag/${tag}`;
+    }
+    return this.homepage;
   }
 
   protected toTag(version: string) {
@@ -132,7 +142,9 @@ function makeColumns(entries: CompareModel[]) {
       "Name",
       ":---- ",
       (cw: CompareModel) => {
-        return cw.homepage ? `[${cw.name}](${cw.homepage})` : `\`${cw.name}\``;
+        return cw.homepage
+          ? `[${cw.name}](${cw.releasePage})`
+          : `\`${cw.name}\``;
       },
       "left",
       (cw: CompareModel) => cw.name
