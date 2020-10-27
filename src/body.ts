@@ -29,8 +29,8 @@ export class CompareModel {
     this.packageType = this.toPackageType(this.name, project);
     this.repo = this.toURL(o.repository);
     this.homepage = o.homepage;
-    this.releasePage = this.getReleasePage();
     this.tags = new Set();
+    this.releasePage = this.getReleasePage();
   }
 
   public rangeWanted() {
@@ -43,8 +43,7 @@ export class CompareModel {
 
   protected getReleasePage() {
     if (this.repo) {
-      const tag = this.toTag(this.current);
-      return `https://github.com/${this.repo}/releases/tag/${tag}`;
+      return `${this.repo}/releases/tag/v${this.current}`;
     }
     return this.homepage;
   }
