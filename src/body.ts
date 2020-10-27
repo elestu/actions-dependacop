@@ -43,8 +43,7 @@ export class CompareModel {
 
   protected getReleasePage() {
     if (this.repo) {
-      const tag = this.toTag(this.current);
-      return `https://github.com/${this.repo}/releases/tag/${tag}`;
+      return `${this.repo}/releases/tag/v${this.current}`;
     }
     return this.homepage;
   }
