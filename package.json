@@ -1,6 +1,6 @@
 {
   "name": "@elestu/actions-dependacop",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GitHub Action for package.json update.",
   "keywords": [
     "github-actions",
