@@ -43,7 +43,7 @@ export class CompareModel {
 
   protected getReleasePage() {
     if (this.repo) {
-      return `${this.repo}/releases/tag/v${this.wanted}`;
+      return `${this.repo}/releases`;
     }
     return this.homepage;
   }
